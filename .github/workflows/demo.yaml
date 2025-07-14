@@ -17,12 +17,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    # Set up AWS CLI and assume the role
+    # Set up AWS CLI
     - name: Set up AWS CLI
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        role-to-assume: arn:aws:iam::237712307052:role/github-acations-openid
-        role-session-name: githubactions
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1  # You can change this to your preferred region
 
     # Check AWS connection using the `sts get-caller-identity` command
