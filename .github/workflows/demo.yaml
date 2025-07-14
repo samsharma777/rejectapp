@@ -31,9 +31,8 @@ jobs:
         echo "Checking AWS Connection..."
         aws sts get-caller-identity
 
-    # Optionally, you can output more information or additional commands
-    - name: List S3 Buckets (Example)
+    # List EC2 Instances
+    - name: List EC2 Instances
       run: |
-        echo "Listing S3 Buckets..."
-        aws s3 ls
-
+        echo "Listing EC2 Instances..."
+        aws ec2 describe-instances --query "Reservations[].Instances[].InstanceId"
